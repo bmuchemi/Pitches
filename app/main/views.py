@@ -3,7 +3,7 @@ from . import main
 from flask import render_template,request,redirect,url_for, abort
 from ..models import User,Pitches,Comments
 from .forms import EditProfile, PitchForm, CommentForm
-from .. import db
+from .. import db,photos
 
 
 
@@ -37,3 +37,13 @@ def profile(name):
     return render_template('profile/profile.html', user=user, form=form)
 
 
+@main.route('/user/<name>/edit/pic', methods=['POST'])
+@login_required
+def update_pic(name):
+    user=User.query.filter_by(username=name).first()
+    if 'photo' in request.files:
+        filename=photos.save(request.files['photo'])
+        path=f'photos/{filename}'
+        user.avatar=path
+        db.session.commit()
+    return redirect(url_for('main.profile', name=name))
