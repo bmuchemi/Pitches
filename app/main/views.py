@@ -16,3 +16,5 @@ def pitch_form():
         new_pitch.save_pitch()
         return redirect(url_for('main.home'))
     return render_template('newpitch.html', pitch_form=pitch_form, )
+
+
