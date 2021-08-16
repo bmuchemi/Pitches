@@ -3,7 +3,7 @@ from wtforms import StringField, TextAreaField, SelectField ,SubmitField
 from wtforms.validators import Required
 
 
-CATEGORY_CHOICES=[('Elevator Pitch','Elevator Pitch'), ('Pickup lines','Pickup lines'), ('Puns','Puns')]
+CATEGORY_CHOICES=[('Interview Pitch','Interview Pitch'), ('Pickup lines','Pickup lines'), ('The Twitter Pitch','The Twitter Pitch')]
 
 class EditProfile(FlaskForm):
     about = TextAreaField('Tell us about yourself.',validators = [Required()])

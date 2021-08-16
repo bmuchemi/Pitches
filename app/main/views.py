@@ -6,6 +6,14 @@ from .forms import EditProfile, PitchForm, CommentForm
 from .. import db,photos
 
 
+@main.route('/')
+def home():
+    pitches=Pitches.query.all()
+    identification = Pitches.user_id
+    posted_by = User.query.filter_by(id=identification).first()
+    user = User.query.filter_by(id=current_user.get_id()).first()
+
+    return render_template('pitches.html', pitches=pitches, posted_by=posted_by, user=user)
 
 
 @main.route('/newpitch', methods=['GET','POST'])
