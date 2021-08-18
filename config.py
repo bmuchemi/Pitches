@@ -4,8 +4,8 @@ class Config:
     '''
     UPLOADED_PHOTOS_DEST='app/static/photos'
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    WTF_CSRF_SECRET_KEY = os.environ.get("WTF_CSRF_SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://bmuchemi:BENJA9262@localhost/pitches'
+
     #email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
