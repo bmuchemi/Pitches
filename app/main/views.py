@@ -16,6 +16,7 @@ def home():
     return render_template('pitches.html', pitches=pitches, posted_by=posted_by, user=user)
 
 
+
 @main.route('/newpitch', methods=['GET','POST'])
 @login_required
 def pitch_form():

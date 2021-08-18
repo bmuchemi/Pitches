@@ -1,18 +1,17 @@
-import os 
-
+import os
 class Config:
     '''
     '''
-    SECRET_KEY=os.environ.get('SECRET_KEY')
     UPLOADED_PHOTOS_DEST='app/static/photos'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    WTF_CSRF_SECRET_KEY = os.environ.get("WTF_CSRF_SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://bmuchemi:BENJA9262@localhost/pitches'
-
     #email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD") 
 
 class ProdConfig(Config):
     '''
