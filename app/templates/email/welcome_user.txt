@@ -1,7 +1,7 @@
 Hi, {{user.username}}
-With Pitches, you can create new elevator pitches or even, pickup lines and puns. 
-Leave feedback on pitches by upvote or downvote them or even comment .
-We are happy to have you on board.
+With Pitch, you can create new elevator pitches or even, pickup lines and puns. 
+Leave feedback on pitches and upvote or downvote them.
+We are thrilled to have you on board.
 
-From the brains that brought you "gitsearch"
-----Benjamin and the team of developers-----
+We ap-pitch-iate you,
+Karen and her imaginary team

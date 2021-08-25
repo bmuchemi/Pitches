@@ -1,13 +1,13 @@
-from flask import render_template,redirect,url_for,flash,request
-from .forms import RegistrationForm,LoginForm
-from flask_login import login_user,logout_user,login_required     
+from flask import render_template, redirect, url_for, flash, request
 from . import auth
-from .. import db,photos
+from .forms import SignupForm, LoginForm
 from ..models import User
+from .. import db
+from flask_login import login_user, logout_user, login_required
 from ..email import mail_message
 
 
-@auth.route('/login',methods=['GET','POST'])
+@auth.route('/login', methods=['GET','POST'])
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
@@ -22,23 +22,21 @@ def login():
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 
-
-
-@auth.route('/register',methods = ["GET","POST"])
+@auth.route('/signup', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
+    form = SignupForm()
     if form.validate_on_submit():
-        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
+        user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        mail_message('Welcome to pitches', 'email/welcome_user', user.email, user=user)
+        mail_message('Welcome to pitch', 'email/welcome_user', user.email, user=user)
         return redirect(url_for('auth.login'))
-        title = "New Account"
-    return render_template('auth/register.html',registration_form = form)
+        title = "Create account"
+    return render_template('auth/signup.html', signup_form=form)
 
 
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("main.index"))
+    return redirect(url_for('main.home'))

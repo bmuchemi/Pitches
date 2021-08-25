@@ -1,14 +1,15 @@
-from flask_login import login_required,current_user
 from . import main
-from flask import render_template,request,redirect,url_for, abort
-from ..models import User,Pitches,Comments
+from flask import render_template, request, redirect, url_for, abort
+from ..models import User, Pitches, Comments, UpVote
+from flask_login import login_required, current_user
 from .forms import EditProfile, PitchForm, CommentForm
-from .. import db,photos
+from .. import db, photos
+
 
 
 @main.route('/')
 def home():
-    pitches=Pitches.query.all()
+    pitches=Pitches.query.filter_by(category='Blog Pitch')
     identification = Pitches.user_id
     posted_by = User.query.filter_by(id=identification).first()
     user = User.query.filter_by(id=current_user.get_id()).first()
@@ -16,8 +17,7 @@ def home():
     return render_template('pitches.html', pitches=pitches, posted_by=posted_by, user=user)
 
 
-
-@main.route('/newpitch', methods=['GET','POST'])
+@main.route('/new_pitch', methods=['GET','POST'])
 @login_required
 def pitch_form():
     pitch_form = PitchForm()
@@ -27,18 +27,18 @@ def pitch_form():
         new_pitch = Pitches(category=category, text=text, user=current_user)
         new_pitch.save_pitch()
         return redirect(url_for('main.home'))
-    return render_template('newpitch.html', pitch_form=pitch_form, )
+    return render_template('new_pitch.html', pitch_form=pitch_form )
+
 
 @main.route('/categories/<pitch_category>')
 def categories(pitch_category):
     pitch = Pitches.get_category(pitch_category)
-
     identification = Pitches.user_id
     posted_by = User.query.filter_by(id=identification).first()
     return render_template('categories.html', pitch=pitch, posted_by=posted_by)
 
 
-@main.route('/comments/<int:pitch_id>', methods=['GET','POST'])
+@main.route('/comments/<int:pitch_id>', methods=['GET','POST']) 
 @login_required
 def pitch_comments(pitch_id):
     comments = Comments.get_comments(pitch_id)
@@ -49,7 +49,7 @@ def pitch_comments(pitch_id):
 
     form = CommentForm()
     if form.validate_on_submit():
-        comment = form.pitch_comment.data      
+        comment = form.pitch_comment.data 
         new_comment = Comments(comment=comment, pitch_id=pitch_id, user_id=current_user.get_id())
         new_comment.save_comment()
         return redirect(url_for('main.pitch_comments',pitch_id = pitch_id))
@@ -82,4 +82,5 @@ def update_pic(name):
         path=f'photos/{filename}'
         user.avatar=path
         db.session.commit()
-    return redirect(url_for('main.profile', name=name))
+    return redirect(url_for('main.profile', name=name ))
+

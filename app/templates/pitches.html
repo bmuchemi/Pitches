@@ -6,7 +6,7 @@
     <div class="row">
         <!-- CURRENT USER -->
         {% if current_user.is_authenticated%}
-        <div class="col-md-3 bg-success ml-0 mb-1 text-center">
+        <div class="col-md-6 bg-success ml-0 mb-1 text-center">
             {% if user.avatar %}
             <img class="img-thumbnail mt-3" src="{{url_for('static',filename=user.avatar)}}" alt="profile-image"> {% else %}
             <p>No profile picture</p>
@@ -21,10 +21,10 @@
                 <span class="font-italic">{{user.email}}</span>
             </div>
             <div class="buttons">
-                <button class="btn btn-outline-secondary">
+                <button class="btn btn-outline-secondary alert">
                     <a href="/new_pitch" class="text-dark">Create a pitch</a>
                 </button>
-                <button class="btn btn-outline-secondary">
+                <button class="btn btn-outline-secondary alert">
                     <a class="text-dark" href="{{url_for('main.profile',name=user.username)}}">Edit profile</a>
                 </button>
             </div>
@@ -32,12 +32,13 @@
         {% endif %}
 
         <!-- ALL PITCHES -->
-        <div class="offset-1 col-md-7">
+        <!-- ALL PITCHES -->
+        <div class="offset-1 col-xl-10">
             <div class="row ">
                 <!-- pitches start here  -->
                 {% if pitches %} {% for item in pitches %}
-                <div class="col-sm-4">
-                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                <div class="col-lg-4">
+                    <div class="card border-success mb-3" style="max-width: 45rem;">
                         <div class="card-header bg-transparent border-success">Category: {{item.category}} </div>
                         <div class="card-body text-success">
                           <h5 class="card-title">{{posted_by.username}}</h5>
@@ -71,6 +72,7 @@
                 <br> {% endfor %} {% endif %}
             </div>
         </div>
+       
     </div>
 </div>
 {% endblock %}
