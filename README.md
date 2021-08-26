@@ -8,7 +8,7 @@ This is an application that allows users to use their one minute wisely, to post
 #### Getting Started
 - Clone this repo and ```cd``` into the folder
 ```sh 
-$ git clone https://github.com/bmuchemi/pitches
+$ git clone https://github.com/bmuchemi/pitches55
 
 $ source virtual/bin/activate
 
