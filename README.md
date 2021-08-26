@@ -1,16 +1,14 @@
-### **PITCH PLEASE**
+### **PITCHES**
 
 ****
-#### Author: [Karen Ngala](https://github.com/KarenNgala)
+#### Author: [Benjamin Muchemi](https://github.com/bmuchemi)
 
 #### **Description**
-This is an application that allows users to use their one minute wisely, to impress. The users will submit their one minute pitches and other users will vote on them and leave comments to give feedback.
-The pitches are organized by category. 
-
+This is an application that allows users to use their one minute wisely, to post pitches and comment on other peoples pitches
 #### Getting Started
 - Clone this repo and ```cd``` into the folder
 ```sh 
-$ git clone https://github.com/KarenNgala/PITCH
+$ git clone https://github.com/bmuchemi/pitches
 
 $ source virtual/bin/activate
 
@@ -34,9 +32,12 @@ $ source virtual/bin/activate
 1. Flask
 2. HTML5
 3. Bootstrap4
+4. pyhton3
+5. markdown
+6. css
 
 #### **Contact**
->Karen Ngala - ngalalalu@gmail.com
+>Benjamin Muchemi - bmuchemi55@gmail.com
 
 #### **Copyright & License**
 Distributed under the MIT License. See LICENSE for more information on license and copyright. 
