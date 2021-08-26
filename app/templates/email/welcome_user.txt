@@ -1,7 +1,6 @@
 Hi, {{user.username}}
-With Pitch, you can create new elevator pitches or even, pickup lines and puns. 
+With Pitch, you can create new Blog pitches or even, pickup lines and jokes. 
 Leave feedback on pitches and upvote or downvote them.
-We are thrilled to have you on board.
+From the brains that brought you Quotegram.
+Benjamin the creater.
 
-We ap-pitch-iate you,
-Karen and her imaginary team
